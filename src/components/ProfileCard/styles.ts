@@ -6,7 +6,6 @@ export const ProfileCardInfos = styled.div`
   color: ${(props) => props.theme["white"]};
   width: 864px;
   max-width: 1120px;
-  height: 212px;
   border-radius: 10px;
   margin-top: 5rem;
   padding: 2rem 1.5rem;
@@ -15,10 +14,10 @@ export const ProfileCardInfos = styled.div`
 
   display: flex;
   gap: 2rem;
-  align-items: center;
+  align-items: flex-start; /* importante para alinhar topo */
 `;
 
-export const ImgProfile = styled.div`
+export const Avatar = styled.div`
   width: 148px;
   height: 148px;
   border-radius: 8px;
@@ -76,19 +75,27 @@ export const GithubProfile = styled.button`
   }
 `;
 
-export const UserDescription = styled.p`
-  ${mixins.fonts.textM};
+export const Bio = styled.div`
+  ${mixins.fonts.textS};
   color: ${(props) => props.theme["text"]};
   margin-top: 0.5rem;
-`;
+  overflow-wrap: break-word;
 
-const baseInfoStyle = `
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  img {
-    width: 1rem;
-    height: 1rem;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${(props) => props.theme["title"]};
+    margin: 0.5rem 0;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -99,19 +106,31 @@ export const FooterInfo = styled.div`
 `;
 
 export const User = styled.div`
-  ${baseInfoStyle};
   ${mixins.fonts.textS};
   color: ${(props) => props.theme["span"]};
+
+  img {
+    margin-right: 5px;
+    margin-bottom: -3px;
+  }
 `;
 
 export const Work = styled.div`
-  ${baseInfoStyle};
   ${mixins.fonts.textS};
   color: ${(props) => props.theme["span"]};
+
+  img {
+    margin-right: 5px;
+    margin-bottom: -3px;
+  }
 `;
 
 export const Followers = styled.div`
-  ${baseInfoStyle};
   ${mixins.fonts.textS};
   color: ${(props) => props.theme["span"]};
+
+  img {
+    margin-right: 5px;
+    margin-bottom: -3px;
+  }
 `;
