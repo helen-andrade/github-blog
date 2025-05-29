@@ -1,4 +1,3 @@
-// services/issue.ts
 export async function fetchIssues() {
   const response = await fetch(
     "https://api.github.com/repos/helen-andrade/github-blog/issues"
