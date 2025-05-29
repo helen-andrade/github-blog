@@ -6,12 +6,16 @@ import { App } from "./App";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyles } from "./styles/global";
 
+import { IssuesProvider } from "./contexts/IssuesContext";
+
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
-        <GlobalStyles />
-        <App />
+        <IssuesProvider>
+          <GlobalStyles />
+          <App />
+        </IssuesProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

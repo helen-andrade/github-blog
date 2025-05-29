@@ -1,15 +1,10 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchIssues } from "../../services/issue";
 import { Header } from "../../components/Header";
 import {
-  ViewProjectContainer,
-  PostInfo,
-  PostHeader,
-  ActionButtons,
-  Title,
-  FooterInfo,
-  User,
-  Calendar,
-  Comments,
-  ContainerPost,
+  ViewProjectContainer, PostInfo, PostHeader, ActionButtons,
+  Title, FooterInfo, User, Calendar, Comments, ContainerPost,
 } from "./styles";
 
 import iconArrow from "../../assets/icons/icon-arrow.svg";
@@ -18,8 +13,38 @@ import iconGithub from "../../assets/icons/icon-github.svg";
 import iconCalendar from "../../assets/icons/icon-calendar.svg";
 import iconComments from "../../assets/icons/icon-comments.svg";
 import ReactMarkdown from "react-markdown";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
+
+interface Issue {
+  number: number;
+  title: string;
+  body: string;
+  created_at: string;
+  comments: number;
+  user: {
+    login: string;
+  };
+  html_url: string;
+}
 
 export function ViewProject() {
+  const { id } = useParams<{ id: string }>();
+  const [issue, setIssue] = useState<Issue | null>(null);
+
+  useEffect(() => {
+    async function loadIssue() {
+      const issues = await fetchIssues();
+      const found = issues.find((issue: Issue) => String(issue.number) === id);
+      setIssue(found || null);
+    }
+  
+    loadIssue();
+  }, [id]);
+  
+
+  if (!issue) return <p>Carregando...</p>;
+
   return (
     <>
       <Header />
@@ -30,49 +55,36 @@ export function ViewProject() {
               <a href="/">
                 <img src={iconBack} alt="" /> VOLTAR
               </a>
-              <a href="#">
+              <a href={issue.html_url} target="_blank" rel="noreferrer">
                 VER NO GITHUB <img src={iconArrow} alt="" />
               </a>
             </ActionButtons>
-            <Title>JavaScript data types and data structures</Title>
+            <Title>{issue.title}</Title>
           </PostHeader>
 
           <FooterInfo>
             <User>
               <img src={iconGithub} alt="" />
-              <span>cameronwll</span>
+              <span>{issue.user.login}</span>
             </User>
             <Calendar>
               <img src={iconCalendar} alt="" />
-              <span>Há 1 dia</span>
+              <span>
+                {formatDistanceToNow(new Date(issue.created_at), {
+                  addSuffix: true,
+                  locale: ptBR,
+                })}
+              </span>
             </Calendar>
             <Comments>
               <img src={iconComments} alt="" />
-              <span>5 comentários</span>
+              <span>{issue.comments} comentários</span>
             </Comments>
           </FooterInfo>
         </PostInfo>
 
         <ContainerPost>
-          <ReactMarkdown>
-            {`
-**Programming languages all have built-in data structures, but these often differ from one language to another.** 
-This article attempts to list the built-in data structures available in JavaScript and what properties they 
-have. These can be used to build other data structures. Wherever possible, comparisons with other languages 
-are drawn.
-
-## Dynamic typing
-
-JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any
-particular value type, and any variable can be assigned (and re-assigned) values of all types:
-
-\`\`\`js
-let foo = 42;   // foo is now a number
-foo = 'bar';    // foo is now a string
-foo = true;     // foo is now a boolean
-\`\`\`
-          `}
-          </ReactMarkdown>
+          <ReactMarkdown>{issue.body}</ReactMarkdown>
         </ContainerPost>
       </ViewProjectContainer>
     </>

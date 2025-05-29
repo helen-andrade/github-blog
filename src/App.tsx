@@ -6,7 +6,7 @@ export function App() {
   return (
     <Routes>
       <Route path="/" element={<ProfileGithub />} />
-      <Route path="/viewProject" element={<ViewProject />} />
+      <Route path="/viewProject/:id" element={<ViewProject />} />
     </Routes>
   );
 }
