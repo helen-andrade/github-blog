@@ -3,10 +3,9 @@
 ## Esta é uma aplicação que utilizará da API do GitHub para buscar issues de um repositório, dados do perfil e as exibe como um blog.
 
 <div align="center">
-    <img style="width: 600px;" src="./assets/1.png">
-    <img style="width: 600px;" src="./assets/2.png">
-    <img style="width: 600px;" src="./assets/3.png">
-    <img style="width: 600px;" src="./assets/4.png">
+    <img style="width: 600px;" src="./public/1.png">
+    <img style="width: 600px;" src="./public/2.png">
+    <img style="width: 600px;" src="./public/3.png">
 </div>
 
 # Funcionalidades
