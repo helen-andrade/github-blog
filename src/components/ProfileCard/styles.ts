@@ -97,6 +97,26 @@ export const Bio = styled.div`
     margin: 0.5rem;
     margin-top: 2rem;
   }
+
+  .languages {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    padding-left: 10px;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    padding-left: 40px;
+  }
 `;
 
 export const FooterInfo = styled.div`
