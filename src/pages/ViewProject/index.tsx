@@ -84,8 +84,13 @@ export function ViewProject() {
         </PostInfo>
 
         <ContainerPost>
-          <ReactMarkdown>{issue.body}</ReactMarkdown>
+          <div className="markdown-body">
+            <ReactMarkdown>
+              {issue.body}
+            </ReactMarkdown>
+          </div>
         </ContainerPost>
+
       </ViewProjectContainer>
     </>
   );

@@ -108,4 +108,43 @@ export const ContainerPost = styled.div`
     background: none;
     color: ${(props) => props.theme["text"]};
   }
+
+  .markdown-body {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: ${({ theme }) => theme["text"]};
+    padding: 1rem;
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 1.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 1rem 0;
+    }
+
+    code {
+      background-color: ${({ theme }) => theme["border"]};
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    pre {
+      background: ${({ theme }) => theme["border"]};
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+  }
 `;
