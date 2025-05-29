@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { fetchIssues } from "../../services/issue";
 import { CardsWrapper, GithubContentPublisher } from "./styles";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -16,18 +14,12 @@ interface Issue {
   };
   html_url: string;
 }
+interface GithubContentProps {
+  issues: Issue[]; 
+}
 
-export function GithubContent() {
-  const [issues, setIssues] = useState<Issue[]>([]);
+export function GithubContent({ issues }: GithubContentProps) {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function loadIssues() {
-      const data = await fetchIssues();
-      setIssues(data);
-    }
-    loadIssues();
-  }, []);
 
   return (
     <CardsWrapper>
