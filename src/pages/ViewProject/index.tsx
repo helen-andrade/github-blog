@@ -6,7 +6,6 @@ import {
   ViewProjectContainer, PostInfo, PostHeader, ActionButtons,
   Title, FooterInfo, User, Calendar, Comments, ContainerPost,
 } from "./styles";
-
 import iconArrow from "../../assets/icons/icon-arrow.svg";
 import iconBack from "../../assets/icons/icon-back.svg";
 import iconGithub from "../../assets/icons/icon-github.svg";

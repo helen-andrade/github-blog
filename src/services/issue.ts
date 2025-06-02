@@ -12,7 +12,7 @@ export async function fetchIssues() {
   return (
     data
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .filter((item: any) => !item.pull_request) // filtra apenas issues
+      .filter((item: any) => !item.pull_request)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .map((issue: any) => ({
         number: issue.number,

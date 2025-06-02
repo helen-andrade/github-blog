@@ -5,7 +5,6 @@ import { ThemeProvider } from "styled-components";
 import { App } from "./App";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyles } from "./styles/global";
-
 import { IssuesProvider } from "./contexts/IssuesContext";
 
 createRoot(document.getElementById("root")!).render(
